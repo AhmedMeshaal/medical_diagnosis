@@ -1,10 +1,12 @@
 import MainLayout from '@/Layouts/MainLayout';
+import bodyImg from '../../../../storage/app/public/bodyshape.png';
+import Table from '@/Components/Table/Table';
+import { Link } from '@inertiajs/react';
 
 function DiagnosisPage() {
   return (
     <div>
       <h1 className="mb-8 text-3xl font-bold">Diagnosis</h1>
-      <p className="mb-12 leading-normal">Not implemented</p>
     </div>
   );
 }
