@@ -51,6 +51,16 @@ export interface Organization {
   contacts: Contact[];
 }
 
+export interface Diagnosis {
+  id: number;
+  injure: string;
+  description: string;
+  symptoms: string;
+  sign: string;
+  deleted_at: string;
+  contacts: Contact[];
+}
+
 export type PaginatedData<T> = {
   data: T[];
   links: {
@@ -89,3 +99,4 @@ export type PageProps<
   };
   ziggy: Config & { location: string };
 };
+

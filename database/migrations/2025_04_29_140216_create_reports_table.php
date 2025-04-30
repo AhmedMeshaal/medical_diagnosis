@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('diagnosis', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('account_id')->index();
-            $table->string('injure', 100);
-            $table->string('description', 500)->nullable();
-            $table->string('symptoms', 250)->nullable();
-            $table->string('sign', 250)->nullable();
+            $table->string('name');
+            $table->string('desc');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('diagnosis');
+        Schema::dropIfExists('reports');
     }
 };

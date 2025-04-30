@@ -142,8 +142,3 @@ Route::get('/img/{path}', [ImagesController::class, 'show'])
     ->where('path', '.*')
     ->name('image');
 
-// Diagnosis
-
-Route::get('diagnosis', [DiagnosisController::class, 'index'])
-    ->name('diagnosis')
-    ->middleware('auth');

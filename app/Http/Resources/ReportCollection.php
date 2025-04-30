@@ -4,17 +4,18 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class DiagnosisCollection extends ResourceCollection
+class ReportCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
      *
-     * @return array<int|string, mixed>
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
      */
     public function toArray($request)
     {
         return $this->collection->map->only(
-          'id', 'injure', 'description', 'symptoms', 'deleted_at'
+            'id', 'name', 'desc'
         );
     }
 }
