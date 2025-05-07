@@ -51,14 +51,18 @@ export interface Organization {
   contacts: Contact[];
 }
 
-export interface Diagnosis {
+export interface Report {
   id: number;
-  injure: string;
-  description: string;
-  symptoms: string;
-  sign: string;
+  name: string;
+  desc: string;
   deleted_at: string;
-  contacts: Contact[];
+  photo: string
+  organization: Organization;
+}
+
+export interface Area {
+  id: number;
+  name: string;
 }
 
 export type PaginatedData<T> = {

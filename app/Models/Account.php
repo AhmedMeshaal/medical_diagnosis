@@ -26,4 +26,9 @@ class Account extends Model
     {
         return $this->hasMany(Report::class);
     }
+
+    public function areas(): HasMany
+    {
+        return $this->hasMany(Area::class);
+    }
 }
