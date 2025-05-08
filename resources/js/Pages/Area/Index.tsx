@@ -2,7 +2,6 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Link, usePage } from '@inertiajs/react';
 import { Area, PaginatedData } from '@/types';
 import FilterBar from '@/Components/FilterBar/FilterBar';
-import { Trash2 } from 'lucide-react';
 import Table from '@/Components/Table/Table';
 
 const Index = () => {
@@ -22,9 +21,9 @@ const Index = () => {
         <FilterBar />
         <Link
           className="btn-indigo focus:outline-none"
-          href="#"
+          href={route('area.create')}
         >
-          <span>Create</span>
+          <span>Create </span>
           <span className="hidden md:inline">Body Area</span>
         </Link>
       </div>
@@ -33,13 +32,36 @@ const Index = () => {
           {
             label: 'Name',
             name: 'name',
+
             renderCell: row => (
               <>
-                {row.name}
+                {row.img && (
+                <img
+                  src={row.img}
+                  alt={row.name}
+                  className="w-5 h-5 mr-2 rounded-full"
+                />
+                )}
+                <>{row.name}</>
                   {/*<Trash2 />*/}
               </>
             )
           },
+          {
+            label: 'Body-Area',
+            name: 'img',
+            renderCell: row => (
+              <>
+              {row.img && (
+                <img
+                  src={row.img}
+                  alt={row.name}
+                  className="w-5 h-5 mr-2 rounded-full"
+                />
+                )}
+              </>
+            )
+          }
         ]}
         rows={data}
       />

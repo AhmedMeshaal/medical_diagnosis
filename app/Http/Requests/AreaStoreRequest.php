@@ -26,6 +26,7 @@ class AreaStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:50'],
+            'img' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
         ];
     }
 }

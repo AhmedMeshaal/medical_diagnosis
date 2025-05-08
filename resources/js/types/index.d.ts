@@ -63,6 +63,7 @@ export interface Report {
 export interface Area {
   id: number;
   name: string;
+  img: string;
 }
 
 export type PaginatedData<T> = {

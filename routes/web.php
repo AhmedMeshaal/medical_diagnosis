@@ -156,3 +156,11 @@ Route::get('/img/{path}', [ImagesController::class, 'show'])
 Route::get('area', [AreaController::class, 'index'])
     ->name('area')
     ->middleware('auth');
+
+Route::get('area/create', [AreaController::class, 'create'])
+    ->name('area.create')
+    ->middleware('auth');
+
+Route::post('area/store', [AreaController::class, 'store'])
+    ->name('area.store')
+    ->middleware('auth');

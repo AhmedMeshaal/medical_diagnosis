@@ -18,6 +18,7 @@ class AreaFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+
         ];
     }
 }
