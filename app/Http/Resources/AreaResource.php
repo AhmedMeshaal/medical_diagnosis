@@ -17,7 +17,7 @@ class AreaResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'img' => $this->img ? url()->route('img', ['path' => $this->img, 'w' => 60, 'h' => 60, 'fit' => 'crop']) : null,
+            'img' => $this->img ? url()->route('image', ['path' => $this->img, 'w' => 60, 'h' => 60, 'fit' => 'crop']) : null,
             'deleted_at' => $this->deleted_at,
         ];
     }
