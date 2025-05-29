@@ -1,5 +1,5 @@
 import MainMenuItem from '@/Components/Menu/MainMenuItem';
-import { Building, CircleGauge, PersonStanding, Printer, Users } from 'lucide-react';
+import { BriefcaseMedical, Building, CircleGauge, PersonStanding, Printer, Users } from 'lucide-react';
 
 interface MainMenuProps {
   className?: string;
@@ -14,24 +14,24 @@ export default function MainMenu({ className }: MainMenuProps) {
         icon={<CircleGauge size={20} />}
       />
       <MainMenuItem
-        text="Organizations"
-        link="organizations"
-        icon={<Building size={20} />}
-      />
-      <MainMenuItem
-        text="Contacts"
+        text="Contact"
         link="contacts"
-        icon={<Users size={20} />}
+        icon={<BriefcaseMedical size={20} />}
       />
       <MainMenuItem
-        text="Reports"
-        link="reports"
-        icon={<Printer size={20} />}
+        text="Organization"
+        link="organizations"
+        icon={<BriefcaseMedical size={20} />}
       />
       <MainMenuItem
-        text="Area"
+        text="Body Area"
         link="area"
-        icon={<Printer size={20} />}
+        icon={<BriefcaseMedical size={20} />}
+      />
+      <MainMenuItem
+        text="Lesions"
+        link="lesion"
+        icon={<BriefcaseMedical size={20} />}
       />
     </div>
   );
