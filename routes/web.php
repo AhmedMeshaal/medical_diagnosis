@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DiagnosisController;
 use App\Http\Controllers\ImagesController;
+use App\Http\Controllers\LesionController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UsersController;
@@ -131,36 +132,32 @@ Route::put('contacts/{contact}/restore', [ContactsController::class, 'restore'])
     ->name('contacts.restore')
     ->middleware('auth');
 
-// Reports
-
-Route::get('reports', [ReportsController::class, 'index'])
-    ->name('reports')
-    ->middleware('auth');
-
-Route::get('reports/create', [ReportsController::class, 'create'])
-    ->name('reports.create')
-    ->middleware('auth');
-
-Route::post('reports', [ReportsController::class, 'store'])
-    ->name('reports.store')
-    ->middleware('auth');
-
 // Images
 
 Route::get('/img/{path}', [ImagesController::class, 'show'])
     ->where('path', '.*')
     ->name('image');
 
-// BodyArea
+// Injury
+
+Route::get('lesion', [LesionController::class, 'index'])
+    ->name('lesion')
+    ->middleware('auth');
+
+Route::get('lesion/create/area/{areaID}', [LesionController::class, 'create'])
+    ->name('lesion.create')
+    ->middleware('auth');
+
+Route::post('lesion', [LesionController::class, 'store'])
+    ->name('lesion.store')
+    ->middleware('auth');
+
+Route::get('lesion/{lesion}/edit', [LesionController::class, 'edit'])
+    ->name('lesion.edit')
+    ->middleware('auth');
+
+// Area
 
 Route::get('area', [AreaController::class, 'index'])
     ->name('area')
-    ->middleware('auth');
-
-Route::get('area/create', [AreaController::class, 'create'])
-    ->name('area.create')
-    ->middleware('auth');
-
-Route::post('area/store', [AreaController::class, 'store'])
-    ->name('area.store')
     ->middleware('auth');
