@@ -1,23 +1,23 @@
 import { Link, usePage } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
-import { Injury, PaginatedData } from '@/types';
+import { Lesion, PaginatedData } from '@/types';
 import FilterBar from '@/Components/FilterBar/FilterBar';
 import Table from '@/Components/Table/Table';
 import Pagination from '@/Components/Pagination/Pagination';
 
 function Index() {
-  const { injuries } = usePage<{
-    injuries: PaginatedData<Injury>;
+  const { lesions } = usePage<{
+    lesions: PaginatedData<Lesion>;
   }>().props;
 
   const {
     data,
     meta: { links }
-  } = injuries;
+  } = lesions;
 
   return (
     <div>
-      <h1 className="mb-8 text-3xl font-bold">Injury</h1>
+      <h1 className="mb-8 text-3xl font-bold">Lesions</h1>
       <div className="flex items-center justify-between mb-6">
         <FilterBar />
       </div>
@@ -28,13 +28,13 @@ function Index() {
             name: 'name',
             renderCell: row => (
               <>
-                {row.name}
+                {row.name} - {row.contact} - {row.date_event} - {row.problem_type}
               </>
             )
           },
         ]}
         rows={data}
-        // getRowDetailsUrl={row => route('injury.edit', row.id)}
+        getRowDetailsUrl={row => route('lesion.create', row.id)}
       />
       <Pagination links={links} />
     </div>
@@ -47,7 +47,7 @@ function Index() {
  * [Learn more](https://inertiajs.com/pages#persistent-layouts)
  */
 Index.layout = (page: React.ReactNode) => (
-  <MainLayout title="Injury" children={page} />
+  <MainLayout title="Body Area" children={page} />
 );
 
 export default Index;
