@@ -22,9 +22,9 @@ class Account extends Model
         return $this->hasMany(Contact::class);
     }
 
-    public function reports(): HasMany
+    public function lesions(): HasMany
     {
-        return $this->hasMany(Report::class);
+        return $this->hasMany(Lesion::class);
     }
 
     public function areas(): HasMany
