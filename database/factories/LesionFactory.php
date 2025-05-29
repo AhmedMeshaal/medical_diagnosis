@@ -17,6 +17,7 @@ class InjuryFactory extends Factory
     public function definition(): array
     {
         return [
+            'name' => $this->faker->name(),
             'date_event' => $this->faker->date(),
             'problem_type' => $this->faker->word(),
             'onset' => $this->faker->text(),

@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class Report extends Model
+
+class Injury extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -15,30 +15,10 @@ class Report extends Model
     {
         return $this->where($field ?? 'id', $value)->withTrashed()->firstOrFail();
     }
-
-    public function organization(): BelongsTo
-    {
-        return $this->belongsTo(Organization::class);
-    }
-
-
-    public function getNameAttribute()
-    {
-        return $this->name;
-    }
-
-    public function scopeOrderByName($query)
-    {
-        $query->orderBy('name');
-    }
-
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
-            $query->where(function ($query) use ($search) {
-                $query->where('name', 'like', '%'.$search.'%')
-                    ->orWhere('desc', 'like', '%'.$search.'%');
-            });
+            $query->where('name', 'like', '%' . $search . '%');
         })->when($filters['trashed'] ?? null, function ($query, $trashed) {
             if ($trashed === 'with') {
                 $query->withTrashed();
@@ -46,6 +26,5 @@ class Report extends Model
                 $query->onlyTrashed();
             }
         });
-
     }
 }
