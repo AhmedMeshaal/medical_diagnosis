@@ -60,11 +60,14 @@ export interface Lesion {
   when_occurred: string;
   fixture_minute: number;
   contact: string;
-  contact_type: string;
+  contact_type_id: number;
   subsequent_cat: string;
   time_loss: number;
   area_id: number;
-  areas: Area[];
+  // areas: Area[];
+  player_action_id: number;
+  osiiscode_id: number;
+  player_id: number;
 }
 
 export interface Area {
@@ -74,7 +77,7 @@ export interface Area {
 
 export interface PlayerAction {
   id: number;
-  name: string;
+  action: string;
 }
 
 export interface Illness {
@@ -85,6 +88,20 @@ export interface Illness {
 export interface ContactType {
   id: number;
   name: string;
+}
+
+export interface OsiisCode {
+  id: number;
+  Abr: string;
+  diagnosis: string;
+}
+
+export interface Player {
+  id: number;
+  spl_id: number;
+  name: string;
+  age_bracket: string;
+  DOB: string;
 }
 
 export type PaginatedData<T> = {

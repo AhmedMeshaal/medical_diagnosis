@@ -31,4 +31,9 @@ class Account extends Model
     {
         return $this->hasMany(Area::class);
     }
+
+    public function players(): HasMany
+    {
+        return $this->hasMany(Player::class);
+    }
 }

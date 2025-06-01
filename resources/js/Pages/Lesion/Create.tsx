@@ -1,5 +1,5 @@
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
-import { Area, ContactType, Illness, Lesion } from '@/types';
+import { Area, ContactType, Illness, Lesion, OsiisCode, Player, PlayerAction } from '@/types';
 import React from 'react';
 import MainLayout from '@/Layouts/MainLayout';
 import SelectInput from '@/Components/Form/SelectInput';
@@ -9,11 +9,14 @@ import LoadingButton from '@/Components/Button/LoadingButton';
 import { DatepickerInput } from '@/Components/Form/DatepickerInput';
 
 const Create =  () => {
-  const { lesion, areas, illness, contact_types } = usePage<{
+  const { lesion, areas, illness, contact_types, player_actions, osiis_codes, players } = usePage<{
     lesion: Lesion;
     areas: Area[];
     illness: Illness[];
     contact_types: ContactType[];
+    player_actions: PlayerAction[];
+    osiis_codes: OsiisCode[];
+    players: Player[];
   }>().props;
 
   const { props } = usePage();
@@ -27,17 +30,19 @@ const Create =  () => {
     when_occurred: '',
     fixture_minute: '',
     contact: '',
-    contact_type: '',
+    contact_type_id: '',
     subsequent_cat: '',
     time_loss: '',
     illness_id: '',
-    contact_types_id: '',
+    player_action_id: '',
+    osiiscode_id: '',
+    player_id: '',
   });
 
+  console.log(players);
     // @ts-ignore
   data.area_id = props.areaID;
 
-  console.log(contact_types);
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -59,15 +64,25 @@ const Create =  () => {
         <form onSubmit={handleSubmit}>
           <div className="grid gap-8 p-8 lg:grid-cols-2">
             <FieldGroup
-              label="Name"
-              name="name"
-              error={errors.name}
+              label="Select Player SPL ID"
+              name="player_id"
+              error={errors.player_id}
             >
-              <TextInput
-                name="name"
-                error={errors.name}
-                value={data.name}
-                onChange={e => setData('name', e.target.value)}
+              <SelectInput
+                name="player_id"
+                error={errors.player_id}
+                value={data.player_id}
+                onChange={e => setData('player_id', e.target.value)}
+                options={[
+                  {
+                    value: '',
+                    label: ''
+                  },
+                  ...players.map(player => ({
+                    value: String(player.id),
+                    label: 'NAME-' + player.name + ' SPL ID - ' + player.spl_id
+                  }))
+                ]}
               />
             </FieldGroup>
 
@@ -210,12 +225,12 @@ const Create =  () => {
               />
             </FieldGroup>
 
-            <FieldGroup label="Contact Type" name="contact_type" error={errors.onset}>
+            <FieldGroup label="Contact Type" name="contact_type_id" error={errors.contact_type_id}>
               <SelectInput
-                name="contact_type"
-                error={errors.contact_type}
-                value={data.contact_type}
-                onChange={e => setData('onset', e.target.value)}
+                name="contact_type_id"
+                error={errors.contact_type_id}
+                value={data.contact_type_id}
+                onChange={e => setData('contact_type_id', e.target.value)}
                 options={[
                   {
                     value: '',
@@ -275,6 +290,44 @@ const Create =  () => {
                 error={errors.time_loss}
                 value={data.time_loss}
                 onChange={e => setData('time_loss', e.target.value)}
+              />
+            </FieldGroup>
+
+            <FieldGroup label="Player Action" name="player_action_id" error={errors.player_action_id}>
+              <SelectInput
+                name="player_action_id"
+                error={errors.player_action_id}
+                value={data.player_action_id}
+                onChange={e => setData('player_action_id', e.target.value)}
+                options={[
+                  {
+                    value: '',
+                    label: ''
+                  },
+                  ...player_actions.map(plyact => ({
+                    value: String(plyact.id),
+                    label: plyact.action
+                  }))
+                ]}
+              />
+            </FieldGroup>
+
+            <FieldGroup label="Osiis Code" name="osiiscode_id" error={errors.osiiscode_id}>
+              <SelectInput
+                name="osiiscode_id"
+                error={errors.osiiscode_id}
+                value={data.osiiscode_id}
+                onChange={e => setData('osiiscode_id', e.target.value)}
+                options={[
+                  {
+                    value: '',
+                    label: ''
+                  },
+                  ...osiis_codes.map(osiis => ({
+                    value: String(osiis.id),
+                    label: osiis.diagnosis + ' - ' + osiis.Abr
+                  }))
+                ]}
               />
             </FieldGroup>
 

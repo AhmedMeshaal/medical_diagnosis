@@ -41,4 +41,19 @@ class Lesion extends Model
     {
         return $this->hasOne(Illness::class);
     }
+
+    public function playeraction(): HasOne
+    {
+        return $this->hasOne(PlayerAction::class);
+    }
+
+    public function osiisCode(): HasOne
+    {
+        return $this->hasOne(OsiisCode::class);
+    }
+
+    public function player(): HasMany
+    {
+        return $this->hasMany(Player::class);
+    }
 }
