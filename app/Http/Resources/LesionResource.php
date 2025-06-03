@@ -28,6 +28,7 @@ class LesionResource extends JsonResource
             'area_id' => $this->area_id,
             'player_id' => $this->player_id,
             'playeraction_id' => $this->playeraction_id,
+            'illness_id' => $this->illness_id,
         ];
     }
 }

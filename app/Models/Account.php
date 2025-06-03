@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Account extends Model
 {
@@ -42,4 +43,10 @@ class Account extends Model
     {
         return $this->hasMany(PlayerAction::class);
     }
+
+    public function illness(): HasMany
+    {
+        return $this->hasMany(Illness::class);
+    }
+
 }

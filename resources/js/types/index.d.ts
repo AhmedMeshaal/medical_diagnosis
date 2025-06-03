@@ -70,6 +70,7 @@ export interface Lesion {
   area: Area;
   player: Player;
   playeraction: PlayerAction;
+  illness: Illness;
 }
 
 export interface Area {
@@ -87,6 +88,7 @@ export interface PlayerAction {
 export interface Illness {
   id: number;
   illness_name: string;
+  lesions: Lesion[];
 }
 
 export interface ContactType {

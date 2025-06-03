@@ -16,7 +16,7 @@ function Index() {
     meta: { links }
   } = lesions;
 
-  // console.log(data);
+  console.log(data);
 
   return (
     <div>
@@ -37,7 +37,7 @@ function Index() {
           },
           { label: 'Area', name: 'area.name' },
           { label: 'When Occurred', name: 'when_occurred' },
-          { label: 'Fixture Minute', name: 'fixture_minute' },
+          { label: 'Illness', name: 'illness.illness_name' },
           { label: 'Date Event', name: 'date_event' },
           { label: 'Player SPL_ID', name: 'player.spl_id' },
           { label: 'Player Action', name: 'playeraction.action' }

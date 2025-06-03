@@ -57,11 +57,11 @@ class Lesion extends Model
         return $this->belongsTo(Area::class);
     }
 
-//    public function illness(): HasOne
-//    {
-//        return $this->hasOne(Illness::class);
-//    }
-//
+    public function illness(): BelongsTo
+    {
+        return $this->belongsTo(Illness::class);
+    }
+
     public function playeraction(): BelongsTo
     {
         return $this->belongsTo(PlayerAction::class);

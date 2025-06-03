@@ -17,6 +17,7 @@ class IllnessResource extends JsonResource
         return [
             'id' => $this->id,
             'illness_name' => $this->illness_name,
+            'lesions' => $this->lesions()->orderByName()->get()->map->only('id', 'date_event', 'onset', 'when_occurred', 'fixture_minute', 'contact', 'subsequent_cat', 'time_loss'),
         ];
     }
 }
