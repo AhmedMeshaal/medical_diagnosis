@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LesionStoreRequest;
 use App\Http\Requests\LesionUpdateRequest;
-use App\Http\Resources\ContactTypeCollection;
 use App\Http\Resources\ContactTypeResource;
-use App\Http\Resources\IllnessCollection;
 use App\Http\Resources\IllnessResource;
 use App\Http\Resources\LesionCollection;
 use App\Http\Resources\LesionResource;
+use App\Http\Resources\OsiisCodeResource;
+use App\Http\Resources\PathologyTypeResource;
+use App\Http\Resources\PlayerActionResource;
 use App\Http\Resources\UserAreaCollection;
+use App\Http\Resources\UserPlayerCollection;
 use App\Models\ContactType;
 use App\Models\Illness;
+use App\Models\Illnesses;
 use App\Models\Lesion;
+use App\Models\Osiiscode;
+use App\Models\PathologyType;
+use App\Models\PlayerAction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -27,6 +34,7 @@ class LesionController extends Controller
      */
     public function index(): Response
     {
+
         return Inertia::render('Lesion/Index', [
             'filters' => Request::all('search', 'trashed'),
             'lesions' => new LesionCollection(
@@ -36,7 +44,6 @@ class LesionController extends Controller
                     ->appends(Request::all())
             ),
         ]);
-
     }
 
     /**
@@ -51,8 +58,15 @@ class LesionController extends Controller
                 ->orderBy('name')
                 ->get()
             ),
-            'illness' => IllnessResource::collection(Illness::all()),
+            'pathology_types' => PathologyTypeResource::collection(PathologyType::all()),
+            'illnesses' => IllnessResource::collection(Illness::all()),
             'contact_types' => ContactTypeResource::collection(ContactType::all()),
+            'player_actions' => PlayerActionResource::collection(PlayerAction::all()),
+            'osiis_codes' => OsiisCodeResource::collection(Osiiscode::all()),
+            'players' => new UserPlayerCollection(
+                Auth::user()->account->players()
+                ->get()
+            ),
             'areaID' => $areaID
         ]);
     }
@@ -60,9 +74,13 @@ class LesionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LesionStoreRequest $request): RedirectResponse
     {
-        //
+        Auth::user()->account->lesions()->create(
+            $request->validated()
+        );
+
+        return Redirect::route('lesion')->with('success', 'Injury created.');
     }
 
     /**

@@ -53,21 +53,20 @@ export interface Organization {
 
 export interface Lesion {
   id: number;
-  name: string;
   date_event: string;
-  problem_type: string;
   onset: string;
   when_occurred: string;
   fixture_minute: number;
   contact: string;
-  contact_type_id: number;
+  contacttype_id: number;
   subsequent_cat: string;
   time_loss: number;
   area_id: number;
-  // areas: Area[];
-  player_action_id: number;
+  playeraction_id: number;
   osiiscode_id: number;
   player_id: number;
+  illness_id: number;
+  pathologytype_id: number;
 }
 
 export interface Area {
@@ -102,6 +101,12 @@ export interface Player {
   name: string;
   age_bracket: string;
   DOB: string;
+}
+
+export interface PathologyType {
+  id: number;
+  pathology_type: string;
+  issue: string;
 }
 
 export type PaginatedData<T> = {

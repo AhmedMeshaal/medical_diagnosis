@@ -15,6 +15,8 @@ function Index() {
     meta: { links }
   } = lesions;
 
+  console.log(lesions);
+
   return (
     <div>
       <h1 className="mb-8 text-3xl font-bold">Lesions</h1>
@@ -28,10 +30,11 @@ function Index() {
             name: 'name',
             renderCell: row => (
               <>
-                {row.name} - {row.contact} - {row.date_event} - {row.problem_type}
+                {row.contact} - {row.date_event}
               </>
             )
           },
+          // { label: 'area', name: 'lesions.area_id' },
         ]}
         rows={data}
         getRowDetailsUrl={row => route('lesion.create', row.id)}

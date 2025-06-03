@@ -1,45 +1,44 @@
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
-import { Area, ContactType, Illness, Lesion, OsiisCode, Player, PlayerAction } from '@/types';
+import { Area, ContactType, Illness, Lesion, OsiisCode, PathologyType, Player, PlayerAction } from '@/types';
 import React from 'react';
 import MainLayout from '@/Layouts/MainLayout';
 import SelectInput from '@/Components/Form/SelectInput';
 import FieldGroup from '@/Components/Form/FieldGroup';
 import TextInput from '@/Components/Form/TextInput';
 import LoadingButton from '@/Components/Button/LoadingButton';
-import { DatepickerInput } from '@/Components/Form/DatepickerInput';
 
 const Create =  () => {
-  const { lesion, areas, illness, contact_types, player_actions, osiis_codes, players } = usePage<{
+  const { lesion, areas, illnesses, contact_types, player_actions, osiis_codes, players, pathology_types } = usePage<{
     lesion: Lesion;
     areas: Area[];
-    illness: Illness[];
+    illnesses: Illness[];
     contact_types: ContactType[];
     player_actions: PlayerAction[];
     osiis_codes: OsiisCode[];
     players: Player[];
+    pathology_types: PathologyType[];
   }>().props;
 
   const { props } = usePage();
 
   const { data, setData, errors, post, processing } = useForm({
-    name: '',
     area_id: lesion.area_id || '',
     date_event: '',
-    problem_type: '',
     onset: '',
     when_occurred: '',
     fixture_minute: '',
     contact: '',
-    contact_type_id: '',
+    contacttype_id: '',
     subsequent_cat: '',
     time_loss: '',
     illness_id: '',
-    player_action_id: '',
+    playeraction_id: '',
     osiiscode_id: '',
     player_id: '',
+    pathologytype_id: '',
   });
 
-  console.log(players);
+  // console.log(pathology_types);
     // @ts-ignore
   data.area_id = props.areaID;
 
@@ -119,11 +118,7 @@ const Create =  () => {
               />
             </FieldGroup>
 
-            <FieldGroup
-              label="Problem Type"
-              name="illness_id"
-              error={errors.illness_id}
-            >
+            <FieldGroup label="Problem Type" name="illness_id" error={errors.illness_id}>
               <SelectInput
                 name="illness_id"
                 error={errors.illness_id}
@@ -134,7 +129,7 @@ const Create =  () => {
                     value: '',
                     label: ''
                   },
-                  ...illness.map(illness => ({
+                  ...illnesses.map(illness => ({
                     value: String(illness.id),
                     label: illness.illness_name
                   }))
@@ -192,7 +187,7 @@ const Create =  () => {
               />
             </FieldGroup>
 
-            <FieldGroup label="Date Event" name="fixture_minute" error={errors.fixture_minute}>
+            <FieldGroup label="Fixture Minute" name="fixture_minute" error={errors.fixture_minute}>
               <TextInput
                 name="fixture_minute"
                 type="number"
@@ -202,12 +197,12 @@ const Create =  () => {
               />
             </FieldGroup>
 
-            <FieldGroup label="Contact" name="contact" error={errors.onset}>
+            <FieldGroup label="Contact" name="contact" error={errors.contact}>
               <SelectInput
                 name="contact"
-                error={errors.onset}
-                value={data.onset}
-                onChange={e => setData('onset', e.target.value)}
+                error={errors.contact}
+                value={data.contact}
+                onChange={e => setData('contact', e.target.value)}
                 options={[
                   {
                     value: '',
@@ -225,12 +220,12 @@ const Create =  () => {
               />
             </FieldGroup>
 
-            <FieldGroup label="Contact Type" name="contact_type_id" error={errors.contact_type_id}>
+            <FieldGroup label="Contact Type" name="contacttype_id" error={errors.contacttype_id}>
               <SelectInput
-                name="contact_type_id"
-                error={errors.contact_type_id}
-                value={data.contact_type_id}
-                onChange={e => setData('contact_type_id', e.target.value)}
+                name="contacttype_id"
+                error={errors.contacttype_id}
+                value={data.contacttype_id}
+                onChange={e => setData('contacttype_id', e.target.value)}
                 options={[
                   {
                     value: '',
@@ -293,12 +288,12 @@ const Create =  () => {
               />
             </FieldGroup>
 
-            <FieldGroup label="Player Action" name="player_action_id" error={errors.player_action_id}>
+            <FieldGroup label="Player Action" name="playeraction_id" error={errors.playeraction_id}>
               <SelectInput
-                name="player_action_id"
-                error={errors.player_action_id}
-                value={data.player_action_id}
-                onChange={e => setData('player_action_id', e.target.value)}
+                name="playeraction_id"
+                error={errors.playeraction_id}
+                value={data.playeraction_id}
+                onChange={e => setData('playeraction_id', e.target.value)}
                 options={[
                   {
                     value: '',
@@ -326,6 +321,25 @@ const Create =  () => {
                   ...osiis_codes.map(osiis => ({
                     value: String(osiis.id),
                     label: osiis.diagnosis + ' - ' + osiis.Abr
+                  }))
+                ]}
+              />
+            </FieldGroup>
+
+            <FieldGroup label="Pathology Type" name="pathologytype_id" error={errors.pathologytype_id}>
+              <SelectInput
+                name="pathologytype_id"
+                error={errors.pathologytype_id}
+                value={data.pathologytype_id}
+                onChange={e => setData('pathologytype_id', e.target.value)}
+                options={[
+                  {
+                    value: '',
+                    label: ''
+                  },
+                  ...pathology_types.map(pathology => ({
+                    value: String(pathology.id),
+                    label: pathology.pathology_type + ' /--/ ' + pathology.issue
                   }))
                 ]}
               />

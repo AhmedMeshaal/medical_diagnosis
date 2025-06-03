@@ -56,4 +56,9 @@ class Lesion extends Model
     {
         return $this->hasMany(Player::class);
     }
+
+    public function pathology_types(): HasMany
+    {
+        return $this->hasMany(Pathologytype::class);
+    }
 }
