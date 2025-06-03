@@ -67,11 +67,13 @@ export interface Lesion {
   player_id: number;
   illness_id: number;
   pathologytype_id: number;
+  area: Area;
 }
 
 export interface Area {
   id: number;
   name: string;
+  lesions: Lesion[];
 }
 
 export interface PlayerAction {

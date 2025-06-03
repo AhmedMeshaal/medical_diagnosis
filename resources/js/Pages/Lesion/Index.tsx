@@ -4,6 +4,7 @@ import { Lesion, PaginatedData } from '@/types';
 import FilterBar from '@/Components/FilterBar/FilterBar';
 import Table from '@/Components/Table/Table';
 import Pagination from '@/Components/Pagination/Pagination';
+import { Trash2 } from 'lucide-react';
 
 function Index() {
   const { lesions } = usePage<{
@@ -15,7 +16,7 @@ function Index() {
     meta: { links }
   } = lesions;
 
-  console.log(lesions);
+  // console.log(data);
 
   return (
     <div>
@@ -26,15 +27,18 @@ function Index() {
       <Table
         columns={[
           {
-            label: 'Name',
-            name: 'name',
+            label: 'Onset',
+            name: 'onset',
             renderCell: row => (
               <>
-                {row.contact} - {row.date_event}
+                {row.onset}
               </>
             )
           },
-          // { label: 'area', name: 'lesions.area_id' },
+          { label: 'Area', name: 'area.name' },
+          { label: 'When Occurred', name: 'when_occurred' },
+          { label: 'Fixture Minute', name: 'fixture_minute' },
+          { label: 'Date Event', name: 'date_event' }
         ]}
         rows={data}
         getRowDetailsUrl={row => route('lesion.create', row.id)}

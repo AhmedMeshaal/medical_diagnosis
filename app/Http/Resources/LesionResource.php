@@ -25,6 +25,7 @@ class LesionResource extends JsonResource
             'contact_type' => $this->contact_type,
             'subsequent_cat' => $this->subsequent_cat,
             'time_loss' => $this->time_loss,
+            'area_id' => $this->area_id,
         ];
     }
 }

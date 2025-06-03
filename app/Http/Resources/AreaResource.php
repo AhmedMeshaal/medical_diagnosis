@@ -16,6 +16,7 @@ class AreaResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'lesions' => $this->lesions()->orderByName()->get()->map->only('id', 'date_event', 'onset', 'when_occurred', 'fixture_minute', 'contact', 'subsequent_cat', 'time_loss'),
         ];
     }
 }

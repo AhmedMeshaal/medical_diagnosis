@@ -15,7 +15,7 @@ class LesionCollection extends ResourceCollection
     public function toArray($request)
     {
         return $this->collection->map->only(
-            'id', 'name', 'date_event', 'problem_type', 'onset', 'when_occurred', 'fixture_minute', 'contact', 'contact_type', 'subsequent_cat', 'time_loss'
+            'id', 'name', 'date_event', 'problem_type', 'onset', 'when_occurred', 'fixture_minute', 'contact', 'contact_type', 'subsequent_cat', 'time_loss', 'area'
         );
     }
 }
