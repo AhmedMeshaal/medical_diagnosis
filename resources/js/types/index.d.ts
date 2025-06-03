@@ -68,6 +68,8 @@ export interface Lesion {
   illness_id: number;
   pathologytype_id: number;
   area: Area;
+  player: Player;
+  playeraction: PlayerAction;
 }
 
 export interface Area {
@@ -79,6 +81,7 @@ export interface Area {
 export interface PlayerAction {
   id: number;
   action: string;
+  lesions: Lesion[];
 }
 
 export interface Illness {
@@ -103,6 +106,7 @@ export interface Player {
   name: string;
   age_bracket: string;
   DOB: string;
+  lesions: Lesion[];
 }
 
 export interface PathologyType {

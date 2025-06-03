@@ -57,28 +57,28 @@ class Lesion extends Model
         return $this->belongsTo(Area::class);
     }
 
-    public function illness(): HasOne
+//    public function illness(): HasOne
+//    {
+//        return $this->hasOne(Illness::class);
+//    }
+//
+    public function playeraction(): BelongsTo
     {
-        return $this->hasOne(Illness::class);
+        return $this->belongsTo(PlayerAction::class);
+    }
+//
+//    public function osiisCode(): HasOne
+//    {
+//        return $this->hasOne(OsiisCode::class);
+//    }
+
+    public function player(): BelongsTo
+    {
+        return $this->belongsTo(Player::class);
     }
 
-    public function playeraction(): HasOne
-    {
-        return $this->hasOne(PlayerAction::class);
-    }
-
-    public function osiisCode(): HasOne
-    {
-        return $this->hasOne(OsiisCode::class);
-    }
-
-    public function player(): HasMany
-    {
-        return $this->hasMany(Player::class);
-    }
-
-    public function pathology_types(): HasMany
-    {
-        return $this->hasMany(Pathologytype::class);
-    }
+//    public function pathology_types(): HasMany
+//    {
+//        return $this->hasMany(Pathologytype::class);
+//    }
 }
