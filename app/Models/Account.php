@@ -49,4 +49,14 @@ class Account extends Model
         return $this->hasMany(Illness::class);
     }
 
+    public function osiiscode(): HasMany
+    {
+        return $this->hasMany(OsiisCode::class);
+    }
+
+    public function contacttype(): HasMany
+    {
+        return $this->hasMany(ContactType::class);
+    }
+
 }

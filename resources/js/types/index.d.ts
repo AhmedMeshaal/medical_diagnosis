@@ -71,6 +71,8 @@ export interface Lesion {
   player: Player;
   playeraction: PlayerAction;
   illness: Illness;
+  osiiscode: OsiisCode;
+  contacttype: ContactType;
 }
 
 export interface Area {
@@ -94,12 +96,14 @@ export interface Illness {
 export interface ContactType {
   id: number;
   name: string;
+  lesions: Lesion[];
 }
 
 export interface OsiisCode {
   id: number;
   Abr: string;
   diagnosis: string;
+  lesions: Lesion[];
 }
 
 export interface Player {

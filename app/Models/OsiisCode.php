@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class OsiisCode extends Model
 {
@@ -12,8 +13,8 @@ class OsiisCode extends Model
         return $this->where($field ?? 'id', $value)->withTrashed()->firstOrFail();
     }
 
-    public function lesion(): BelongsTo
+    public function lesion(): HasMany
     {
-        return $this->belongsTo(Lesion::class);
+        return $this->hasMany(Lesion::class);
     }
 }
