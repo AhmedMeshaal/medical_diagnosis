@@ -16,7 +16,8 @@ function Index() {
     meta: { links }
   } = lesions;
 
-  console.log(data);
+  // DEBUG LESION TABLE DATA AND THE RELATED TABLES
+  // console.log(data);
 
   return (
     <div>
@@ -35,12 +36,13 @@ function Index() {
               </>
             )
           },
+          { label: 'Player SPL_ID', name: 'player.spl_id' },
           { label: 'Area', name: 'area.name' },
           { label: 'Osiis', name: 'osiiscode.Abr' },
           { label: 'Illness', name: 'illness.illness_name' },
           { label: 'Contact Type', name: 'contacttype.name' },
-          { label: 'Player SPL_ID', name: 'player.spl_id' },
-          { label: 'Player Action', name: 'playeraction.action' }
+          { label: 'Player Action', name: 'playeraction.action' },
+          { label: 'Pathology Type', name: 'pathologytype.pathology_type' }
         ]}
         rows={data}
         getRowDetailsUrl={row => route('lesion.create', row.id)}

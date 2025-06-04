@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PathologyType extends Model
 {
@@ -13,8 +14,8 @@ class PathologyType extends Model
         return $this->where($field ?? 'id', $value)->withTrashed()->firstOrFail();
     }
 
-    public function lesion(): BelongsToMany
+    public function lesion(): HasMany
     {
-        return $this->belongsToMany(Lesion::class);
+        return $this->hasMany(Lesion::class);
     }
 }

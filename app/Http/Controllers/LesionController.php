@@ -39,7 +39,7 @@ class LesionController extends Controller
             'filters' => Request::all('search', 'trashed'),
             'lesions' => new LesionCollection(
                 Auth::user()->account->lesions()
-                    ->with('area', 'player', 'playeraction', 'illness', 'osiiscode')
+                    ->with('area', 'player', 'playeraction', 'illness', 'osiiscode', 'pathologytype')
                     ->filter(Request::only('search', 'trashed'))
                     ->paginate()
                     ->appends(Request::all())

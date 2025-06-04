@@ -59,4 +59,9 @@ class Account extends Model
         return $this->hasMany(ContactType::class);
     }
 
+    public function pathologytype(): HasMany
+    {
+        return $this->hasMany(PathologyType::class);
+    }
+
 }

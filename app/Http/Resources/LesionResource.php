@@ -31,6 +31,7 @@ class LesionResource extends JsonResource
             'illness_id' => $this->illness_id,
             'osiiscode_id' => $this->osiiscode_id,
             'contacttype_id' => $this->contacttype_id,
+            'pathologytype_id' => $this->pathologytype_id,
         ];
     }
 }

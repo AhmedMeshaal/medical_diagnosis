@@ -73,6 +73,7 @@ export interface Lesion {
   illness: Illness;
   osiiscode: OsiisCode;
   contacttype: ContactType;
+  pathologytype: PathologyType;
 }
 
 export interface Area {
@@ -119,6 +120,7 @@ export interface PathologyType {
   id: number;
   pathology_type: string;
   issue: string;
+  lesions: Lesion[];
 }
 
 export type PaginatedData<T> = {

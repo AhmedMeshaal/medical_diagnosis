@@ -70,8 +70,8 @@ class Lesion extends Model
         return $this->belongsTo(ContactType::class);
     }
 
-//    public function pathology_types(): HasMany
-//    {
-//        return $this->hasMany(Pathologytype::class);
-//    }
+    public function pathologytype(): BelongsTo
+    {
+        return $this->belongsTo(PathologyType::class);
+    }
 }
