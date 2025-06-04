@@ -5,6 +5,7 @@ import FilterBar from '@/Components/FilterBar/FilterBar';
 import Table from '@/Components/Table/Table';
 import Pagination from '@/Components/Pagination/Pagination';
 import { Trash2 } from 'lucide-react';
+import { CSVLink } from 'react-csv';
 
 function Index() {
   const { lesions } = usePage<{
@@ -18,6 +19,17 @@ function Index() {
 
   // DEBUG LESION TABLE DATA AND THE RELATED TABLES
   // console.log(data);
+const headers = [
+  { label: 'ID', key: 'id' },
+  { label: 'Player SPL_ID', key: 'player.spl_id' },
+  { label: 'Area', key: 'area.name' },
+  { label: 'Osiis', key: 'osiiscode.Abr' },
+  { label: 'Illness', key: 'illness.illness_name' },
+  { label: 'Contact Type', key: 'contacttype.name' },
+  { label: 'Player Action', key: 'playeraction.action' },
+  { label: 'Pathology Type', key: 'pathologytype.pathology_type' }
+];
+
 
   return (
     <div>
@@ -25,6 +37,18 @@ function Index() {
       <div className="flex items-center justify-between mb-6">
         <FilterBar />
       </div>
+
+      <div className="flex items-center justify-between mb-6">
+        <CSVLink
+          data={data}
+          headers={headers}
+          filename="injureis.csv"
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Export to CSV
+        </CSVLink>
+      </div>
+
       <Table
         columns={[
           {
@@ -52,13 +76,13 @@ function Index() {
   );
 }
 
-/**
- * Persistent Layout (Inertia.js)
- *
- * [Learn more](https://inertiajs.com/pages#persistent-layouts)
- */
-Index.layout = (page: React.ReactNode) => (
-  <MainLayout title="Body Area" children={page} />
-);
+  /**
+   * Persistent Layout (Inertia.js)
+   *
+   * [Learn more](https://inertiajs.com/pages#persistent-layouts)
+   */
+  Index.layout = (page: React.ReactNode) => (
+    <MainLayout title="Body Area" children={page} />
+  );
 
-export default Index;
+  export default Index;
