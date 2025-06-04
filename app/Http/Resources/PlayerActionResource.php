@@ -17,7 +17,7 @@ class PlayerActionResource extends JsonResource
         return [
             'id' => $this->id,
             'action' => $this->action,
-            'lesions' => $this->lesions()->orderByName()->get()->map->only('id', 'date_event', 'onset', 'when_occurred', 'fixture_minute', 'contact', 'subsequent_cat', 'time_loss'),
+//            'lesions' => $this->lesions()->orderByName()->get()->map->only('id', 'date_event', 'onset', 'when_occurred', 'fixture_minute', 'contact', 'subsequent_cat', 'time_loss'),
         ];
     }
 }
