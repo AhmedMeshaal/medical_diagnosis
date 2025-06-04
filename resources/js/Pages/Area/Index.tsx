@@ -53,7 +53,7 @@ const Index = () => {
  * [Learn more](https://inertiajs.com/pages#persistent-layouts)
  */
 Index.layout = (page: React.ReactNode) => (
-  <MainLayout title="Area" children={page} />
+  <MainLayout title="LIST OF BODY AREAS" children={page} />
 );
 
 export default Index;

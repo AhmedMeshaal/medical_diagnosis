@@ -5,6 +5,7 @@ import FilterBar from '@/Components/FilterBar/FilterBar';
 import Table from '@/Components/Table/Table';
 import Pagination from '@/Components/Pagination/Pagination';
 import { Trash2 } from 'lucide-react';
+// @ts-ignore
 import { CSVLink } from 'react-csv';
 
 function Index() {

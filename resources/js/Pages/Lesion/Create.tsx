@@ -1,6 +1,6 @@
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import { Area, ContactType, Illness, Lesion, OsiisCode, PathologyType, Player, PlayerAction } from '@/types';
-import React from 'react';
+// import React from 'react';
 import MainLayout from '@/Layouts/MainLayout';
 import SelectInput from '@/Components/Form/SelectInput';
 import FieldGroup from '@/Components/Form/FieldGroup';
@@ -361,6 +361,8 @@ const Create =  () => {
   )
 }
 
-Create.layout = (page: React.ReactNode) => <MainLayout children={page} />;
+Create.layout = (page: React.ReactNode) => (
+  <MainLayout title="INSERT INJURY" children={page} />
+);
 
 export default Create;

@@ -13,16 +13,16 @@ export default function MainMenu({ className }: MainMenuProps) {
         link="dashboard"
         icon={<CircleGauge size={20} />}
       />
-      <MainMenuItem
-        text="Contact"
-        link="contacts"
-        icon={<BriefcaseMedical size={20} />}
-      />
-      <MainMenuItem
-        text="Organization"
-        link="organizations"
-        icon={<BriefcaseMedical size={20} />}
-      />
+      {/*<MainMenuItem*/}
+      {/*  text="Contact"*/}
+      {/*  link="contacts"*/}
+      {/*  icon={<BriefcaseMedical size={20} />}*/}
+      {/*/>*/}
+      {/*<MainMenuItem*/}
+      {/*  text="Organization"*/}
+      {/*  link="organizations"*/}
+      {/*  icon={<BriefcaseMedical size={20} />}*/}
+      {/*/>*/}
       <MainMenuItem
         text="Body Area"
         link="area"
